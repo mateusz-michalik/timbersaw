@@ -8,7 +8,7 @@ from subprocess import call
 
 # params
 parser = argparse.ArgumentParser(description='Timbersaw')
-parser.add_argument('-s', '--source', help='Source folder of CR2 files', required=True)
+parser.add_argument('-s', '--source', help='Source folder to search for ranged FLACs', required=True)
 args = parser.parse_args()
 
 # dirs and files
