@@ -23,7 +23,6 @@ def init():
     flacs = glob.glob(flac_dir + '**/*.flac')
 
     for flac in flacs:
-        print(flac)
         flac_dir = os.path.dirname(flac) + "/"
         flac_name = os.path.basename(flac)
         flac_name_without_ext = os.path.splitext(flac_name)[0]
