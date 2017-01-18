@@ -6,22 +6,23 @@ import glob
 import argparse
 from subprocess import call
 
-# params
-parser = argparse.ArgumentParser(description='Timbersaw')
-parser.add_argument('-s', '--source', help='Source folder to search for ranged FLACs', required=True)
-args = parser.parse_args()
-
-# dirs and files
-flac_dir = args.source + '/'
-flacs = glob.glob(flac_dir + '**/*.flac')
-cues = glob.glob(flac_dir + '**/*.cue')
-
 # init
 def init():
     print("---------------------------------------------------")
     print("I cut things. It's what I do. What else would I do?")
     print("---------------------------------------------------")
+
+    # params
+    parser = argparse.ArgumentParser(description='Timbersaw')
+    parser.add_argument('-s', '--source', help='Source folder to search for ranged FLACs', required=True)
+    args = parser.parse_args()
+
+    # dirs and files
+    flac_dir = glob.escape(args.source + '/')
+    flacs = glob.glob(flac_dir + '**/*.flac')
+
     for flac in flacs:
+        print(flac)
         flac_dir = os.path.dirname(flac) + "/"
         flac_name = os.path.basename(flac)
         flac_name_without_ext = os.path.splitext(flac_name)[0]
@@ -52,6 +53,7 @@ def init():
             print("CUE file not found, moving on...")
 
         print("---------------------------")
+        exit()
 
 # main script
 if __name__ == "__main__":
