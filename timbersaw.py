@@ -15,6 +15,7 @@ def init():
     # params
     parser = argparse.ArgumentParser(description='Timbersaw')
     parser.add_argument('-s', '--source', help='Source folder to search for ranged FLACs', required=True)
+    parser.add_argument('-c', '--cleanup', help='Default false, if true will remove source range FLACs')
     args = parser.parse_args()
 
     # dirs and files
@@ -45,15 +46,15 @@ def init():
             print("Moving tag data from CUE...")
             call("cd " + "'" + flac_dir + "'; cuetag *.cue [0-9]*.flac", shell=True)
 
-            print("Removing original ranged FLAC...")
-            os.remove(flac)
+            if args.cleanup=="true":
+                print("Removing original ranged FLAC...")
+                os.remove(flac)
 
             print("FLAC and CUE cut complete!")
         else:
             print("CUE file not found, moving on...")
 
         print("---------------------------")
-        exit()
 
 # main script
 if __name__ == "__main__":
