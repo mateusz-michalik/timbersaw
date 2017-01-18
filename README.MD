@@ -1,5 +1,11 @@
 # Timbersaw
-A python script to slice range ripped FLAC files into separate tracks using cue and retaining tag data
+A python script to find and slice range ripped FLAC files into separate tracks using cue and retaining tag data.
+
+Timbersaw only requires 1 param, a source folder, it will traverse the source folder to find FLAC files and then iterate through them to find accompanying CUE files and split as required.
+
+Handy if you're like me and have a ton of old range ripped albums that you'd prefer to have split into tracks.
+
+Timbersaw will also retain tag data and copy it across to the newly split files.
 
 ## Requirements
 You will need the following installed:
